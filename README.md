@@ -91,6 +91,42 @@ O sistema é projetado para pequenos criadores e uso doméstico, garantindo **co
 ## 🛠️ Diferencial: Uso do DMA com ADC
 O uso do **DMA** elimina a necessidade de leitura manual do **ADC**, permitindo que os dados de temperatura sejam capturados continuamente e armazenados na memória sem intervenção da CPU. Isso melhora a **precisão** e **eficiência** do controle térmico, garantindo uma incubação mais estável e confiável.
 
+🔄 Reutilização de Código e Eficiência
+
+A transição do código sem DMA para com DMA foi facilitada pela separação de responsabilidades, trazendo várias vantagens:
+
+✅ Facilidade de Adaptação – A lógica existente foi aproveitada e adaptada para DMA sem grandes mudanças.
+✅ Manutenção Simples – O código modular permite que futuras melhorias sejam feitas sem refatorações extensas.
+✅ Escalabilidade – Suporte fácil para novos sensores (ex: NTC, termopares) sem afetar a estrutura principal.
+✅ Maior Eficiência – Com DMA coletando as amostras automaticamente, a CPU fica livre para outras tarefas, reduzindo o consumo de energia.
+
+🔧 Seleção do Sensor via Diretiva de Pré-Processamento
+
+O código permite a seleção do sensor utilizado através de uma diretiva:
+
+#define USE_PT100 1 // 1 para PT100, 0 para LM35
+
+float get_temperature_from_dma()
+{
+    uint32_t sum = 0;
+    for (int i = 0; i < ADC_BUFFER_SIZE; i++)
+    {
+        sum += adc_buffer[i];
+    }
+    float avg_raw = sum / (float)ADC_BUFFER_SIZE;
+    float voltage = avg_raw * (3.3f / (1 << 12));
+
+#if USE_PT100
+    return voltage * 100.0f; // Conversão para temperatura (PT100)
+#else
+    return (voltage - 0.5f) * 100.0f; // Conversão para temperatura (LM35)
+#endif
+}
+
+📜 Conclusão
+
+O uso de DMA trouxe uma melhoria significativa no desempenho da incubadora, tornando o sistema mais eficiente e preparado para futuras expansões. 🔥🚀
+
 ## 📷 Imagem do Projeto
 ![Eclo Piu-Piu Advanced DMA](EcloPiu-Piu.jpg)
 
