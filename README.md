@@ -95,15 +95,16 @@ O uso do **DMA** elimina a necessidade de leitura manual do **ADC**, permitindo 
 
 A transição do código sem DMA para com DMA foi facilitada pela separação de responsabilidades, trazendo várias vantagens:
 
-✅ Facilidade de Adaptação – A lógica existente foi aproveitada e adaptada para DMA sem grandes mudanças.
-✅ Manutenção Simples – O código modular permite que futuras melhorias sejam feitas sem refatorações extensas.
-✅ Escalabilidade – Suporte fácil para novos sensores (ex: NTC, termopares) sem afetar a estrutura principal.
-✅ Maior Eficiência – Com DMA coletando as amostras automaticamente, a CPU fica livre para outras tarefas, reduzindo o consumo de energia.
+- ✅ **Facilidade de Adaptação – A lógica existente foi aproveitada e adaptada para DMA sem grandes mudanças.**
+- ✅ **Manutenção Simples – O código modular permite que futuras melhorias sejam feitas sem refatorações extensas.**
+- ✅ **Escalabilidade – Suporte fácil para novos sensores (ex: NTC, termopares) sem afetar a estrutura principal.**
+- ✅ **Maior Eficiência – Com DMA coletando as amostras automaticamente, a CPU fica livre para outras tarefas, reduzindo o consumo de energia.**
 
-🔧 Seleção do Sensor via Diretiva de Pré-Processamento
+## 🔧 Seleção do Sensor via Diretiva de Pré-Processamento
 
 O código permite a seleção do sensor utilizado através de uma diretiva:
 
+```C++
 #define USE_PT100 1 // 1 para PT100, 0 para LM35
 
 float get_temperature_from_dma()
