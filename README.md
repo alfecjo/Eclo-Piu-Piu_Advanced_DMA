@@ -74,11 +74,31 @@ endif()
 ___
 ### 🚀 **Apresentação do projeto.**
 
-📌 O projeto idealiza uma incubadora para ovos, compacta para uso doméstico e pequenos criadores, automatizado que controla a temperatura para garantir um ambiente ideal para a eclosão. O projeto utiliza um Raspberry Pi Pico W – Bitdoglab, para monitoramento e controle da temperatura. Consiste em acionar uma lâmpada resistiva para aquecimento e ventoinha para circulação de ar, consequentemente resfriando o ambiente.
-Com capacidade para 36 ovos e medindo: 20cm de altura, 15cm de largura e 45cm de comprimento, a incubadora pode ser aplicada tanto para uso doméstico quanto para pequenas criações comerciais de aves, aumentando a taxa de sucesso na incubação.
-Através de um display OLED 128x64, exibi informações de temperatura, aproveitando o sensor que há na placa.
- 
-Em resumo, manter a temperatura estável de forma automática e permanente dentro dos valores apresentados.
+# 🐣 Eclo Piu-Piu Advanced DMA
+
+Este projeto visa o desenvolvimento de um sistema avançado de controle térmico para incubação de ovos, utilizando um **Raspberry Pi Pico W – Bitdoglab** e técnicas modernas de **DMA (Direct Memory Access) com ADC (Analog-to-Digital Converter)**.
+
+## 🚀 Objetivo do Projeto
+O sistema é projetado para pequenos criadores e uso doméstico, garantindo **controle preciso da temperatura** dentro da incubadora. O diferencial desta versão é a utilização do **DMA**, que permite leituras contínuas e eficientes do sensor **PT100**, otimizando a precisão da temperatura e reduzindo a carga da CPU.
+
+## 🔥 Principais Características
+- ✅ **Leitura avançada de temperatura**: Uso do **DMA com ADC** para obter leituras de temperatura em alta resolução sem comprometer o desempenho do microcontrolador.
+- ✅ **Controle térmico otimizado**: Algoritmo PID ajustável para acionamento de uma resistência elétrica via **PWM**, proporcionando um aquecimento gradual e preciso.
+- ✅ **Monitoramento contínuo**: Exibição de temperatura em tempo real em um **display OLED 128x64**.
+- ✅ **Automação Inteligente**: Controle de uma ventoinha para circulação de ar e resfriamento quando necessário.
+- ✅ **Capacidade**: Incubadora compacta com espaço para **36 ovos**, medindo **20cm de altura, 15cm de largura e 45cm de comprimento**.
+
+## 🛠️ Diferencial: Uso do DMA com ADC
+O uso do **DMA** elimina a necessidade de leitura manual do **ADC**, permitindo que os dados de temperatura sejam capturados continuamente e armazenados na memória sem intervenção da CPU. Isso melhora a **precisão** e **eficiência** do controle térmico, garantindo uma incubação mais estável e confiável.
+
+## 📷 Imagem do Projeto
+![Eclo Piu-Piu Advanced DMA](EcloPiu-Piu.jpg)
+
+---
+
+🛠 **Desenvolvido por [Seu Nome]**  
+📌 *Contribuições são bem-vindas! Sinta-se à vontade para abrir um PR ou relatar issues.* 🚀
+
 ___
 
 ### 📝 **O código foi desenvolvido em C/C++ e testado no ambiente Bitdoglab.**
