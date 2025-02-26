@@ -3,9 +3,7 @@ Pode ser necessário algumas alterações no arquivo CMakeLists.txt, haja visto 
 do ambiente segue características individuais de cada projetista. Sem essas alterações o
 código pode não apresentar o comportamento desejado!
 
-A instalação utilizada para construção desta solução, bem como dos testes segue a lógica a seguir:
-
-## Em Construção...
+## Em Construção Rotina Relacionada ao PT100...
 
 Diferenças entre PT100 e LM35:
 - PT100: É um termorresistor (RTD) que varia sua resistência elétrica conforme a temperatura.
