@@ -3,7 +3,7 @@
 #include "temperature.h"
 #include "adc_setup_dma.h"
 
-#define USE_PT100 1 // Defina como 1 para PT100, 0 para LM35
+#define USE_PT100 0 // Defina como 1 para PT100, 0 para LM35
 
 float get_temperature_from_dma()
 {

@@ -1,76 +1,21 @@
-### Observação importante:
+# Observação importante:
 Pode ser necessário algumas alterações no arquivo CMakeLists.txt, haja visto que cada instalação
 do ambiente segue características individuais de cada projetista. Sem essas alterações o
 código pode não apresentar o comportamento desejado!
 
 A instalação utilizada para construção desta solução, bem como dos testes segue a lógica a seguir:
 
-```cmake
-#Versionamento
-cmake_minimum_required(VERSION 3.12)
+## Em Construção...
 
-# Pull in SDK (must be before project)
-include(pico_sdk_import.cmake)
-include(pico_extras_import_optional.cmake)
+Diferenças entre PT100 e LM35:
+- PT100: É um termorresistor (RTD) que varia sua resistência elétrica conforme a temperatura.
+Requer um circuito de condicionamento de sinal, geralmente um circuito de Ponte de Wheatstone e um amplificador operacional para converter a variação de resistência em tensão legível pelo ADC. No Raspberry Pi Pico, ele não pode ser lido diretamente pelo ADC sem um circuito adicional.
 
-#Raiz do projeto
-project(pico_examples C CXX ASM)
+- LM35: É um sensor de temperatura analógico que fornece uma saída de tensão linear proporcional à temperatura (10 mV/°C).
+Pode ser lido diretamente pelo ADC do Pico sem necessidade de circuitos adicionais.
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
-
-if (PICO_SDK_VERSION_STRING VERSION_LESS "2.1.0")
-    message(FATAL_ERROR "Raspberry Pi Pico SDK version 2.1.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
-endif()
-
-set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR})
-
-# If you want debug output from USB (pass -DPICO_STDIO_USB=1) this ensures you don't lose any debug output while USB is set up
-if (NOT DEFINED PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS)
-    set(PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS 3000)
-endif()
-
-# Initialize the SDK
-pico_sdk_init()
-
-#Adiciona script customizado
-include(example_auto_set_url.cmake)
-
-# Adiciona o executável
-add_executable(ssd1306_oled_bdl
-    src/ssd1306_oled_bdl.c
-    src/ssd1306.c
-    src/adc_setup.c
-    src/i2c_setup.c
-    src/oled_setup.c
-    src/temperature.c
-)
-
-# Diretórios de inclusão
-target_include_directories(ssd1306_oled_bdl
-    PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-# Linka as bibliotecas necessárias
-target_link_libraries(ssd1306_oled_bdl pico_stdlib hardware_i2c hardware_adc)
-
-# Habilita USB e desabilita UART
-pico_enable_stdio_usb(ssd1306_oled_bdl 1)
-pico_enable_stdio_uart(ssd1306_oled_bdl 0)
-
-# Gera arquivos extras (map/bin/hex/uf2)
-pico_add_extra_outputs(ssd1306_oled_bdl)
-
-# Adiciona URL do projeto
-example_auto_set_url(ssd1306_oled_bdl)
-
-if (TARGET hardware_i2c)
-    add_subdirectory_exclude_platforms(ssd1306_oled_bdl)
-else()
-    message("Skipping I2C examples as hardware_i2c is unavailable on this platform")
-endif()
-```
+O LM35 pode ser conectado diretamente ao GP28 e ser lido pelo ADC.
+Já o PT100 não pode ser lido diretamente, pois precisa de um circuito de interface para converter resistência em tensão.
 ___
 # 🚀 **Apresentação do projeto.**
 
