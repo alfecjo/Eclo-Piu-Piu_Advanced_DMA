@@ -72,9 +72,9 @@ else()
 endif()
 ```
 ___
-### 🚀 **Apresentação do projeto.**
+# 🚀 **Apresentação do projeto.**
 
-# 🐣 Eclo Piu-Piu Advanced DMA
+## 🐣 Eclo Piu-Piu Advanced DMA
 
 Este projeto visa o desenvolvimento de um sistema avançado de controle térmico para incubação de ovos, utilizando um **Raspberry Pi Pico W – Bitdoglab** e técnicas modernas de **DMA (Direct Memory Access) com ADC (Analog-to-Digital Converter)**.
 
