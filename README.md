@@ -123,17 +123,17 @@ float get_temperature_from_dma()
     return (voltage - 0.5f) * 100.0f; // Conversão para temperatura (LM35)
 #endif
 }
-
-📜 Conclusão
+```
+## 📜 Conclusão
 
 O uso de DMA trouxe uma melhoria significativa no desempenho da incubadora, tornando o sistema mais eficiente e preparado para futuras expansões. 🔥🚀
 
 ## 📷 Imagem do Projeto
 ![Eclo Piu-Piu Advanced DMA](EcloPiu-Piu.jpg)
 
----
+___
 
-🛠 **Desenvolvido por [Seu Nome]**  
+## 🛠 **Desenvolvido por Antonio Almeida**  
 📌 *Contribuições são bem-vindas! Sinta-se à vontade para abrir um PR ou relatar issues.* 🚀
 
 ___
@@ -147,11 +147,9 @@ ___
 
 ### 📋 **Lista de Testes que contribuiram para a criação do projeto:**
 
-🟢 Teste 0001 - blink_bdl
-🟢 Teste 0002 - button_buzzer_bdl
-🟢 Teste 0003 - blink_rgb_bdl
-🟢 Teste 0004 - buzzer_bdl
-🟢 Teste 0005 - ssd1306_bdl
-🟢 Teste 0006 - goertzel_bdl
-___
-![Projeto final - EcloPiu-Piu](EcloPiu-Piu.jpg)
+- 🟢 Teste 0001 - blink_bdl
+- 🟢 Teste 0002 - button_buzzer_bdl
+- 🟢 Teste 0003 - blink_rgb_bdl
+- 🟢 Teste 0004 - buzzer_bdl
+- 🟢 Teste 0005 - ssd1306_bdl
+- 🟢 Teste 0006 - goertzel_bdl
